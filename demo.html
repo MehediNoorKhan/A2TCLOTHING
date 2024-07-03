@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Gallery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .main-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            margin: 5px;
+            border: 2px solid transparent;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            border: 2px solid #007bff;
+        }
+
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <img src="./img/clothes/Project_20240610_0230.jpg" id="mainImage" class="main-image"
+                    alt="Product Image">
+            </div>
+        </div>
+        <div class="row thumbnails">
+            <div class="col-4 text-center">
+                <img src="./img/clothes/Project_20240610_0232.jpg" class="thumbnail active" alt="Main Image"
+                    onclick="changeImage(this)">
+            </div>
+            <div class="col-4 text-center">
+                <img src="./img/clothes/Project_20240610_0233.jpg" class="thumbnail" alt="Backside Image"
+                    onclick="changeImage(this)">
+            </div>
+            <div class="col-4 text-center">
+                <img src="./img/clothes/Project_20240610_0236.jpg" class="thumbnail" alt="Side Image"
+                    onclick="changeImage(this)">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeImage(element) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = element.src;
+
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(thumbnail => {
+                thumbnail.classList.remove('active');
+            });
+
+            element.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
